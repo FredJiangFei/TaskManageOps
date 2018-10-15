@@ -18,7 +18,13 @@ namespace TaskManageOps
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            // WebHost.CreateDefaultBuilder(args)
+            //     .UseStartup<Startup>();
+
+                WebHost.CreateDefaultBuilder(args)
+                .CaptureStartupErrors(true)
+                .UseStartup<Startup>()
+                .PreferHostingUrls(true)
+                .UseUrls("http://localhost:5000");
     }
 }
